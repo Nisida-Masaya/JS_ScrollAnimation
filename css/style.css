@@ -1,0 +1,119 @@
+body{
+    font-family: serif;
+    background-color: #333333;
+    color: #ffffff;
+}
+
+*, *::before, *::after{
+    box-sizing: border-box;
+}
+
+header{
+    padding: 50px;
+}
+
+@keyframes titleAnimation{
+    0%{
+        letter-spacing: .3em;
+        opacity: 0;
+    }
+}
+
+header h1{
+    font-size: 70px;
+    font-weight: bold;
+    margin-bottom: 60px;
+    white-space: nowrap; /*改行させない*/
+    animation: titleAnimation 1.5s;
+}
+
+main{
+    max-width: 1000px;
+    width: 100%;
+    margin: 50px auto;
+}
+
+.contents li{
+    position: relative;
+    /* opacity: 0;
+    transform: translateY(50px);
+    transition: 1s; */
+}
+
+/*クラスのshowが付いたら*/
+/* .contents li.show{
+    opacity: 1;
+    transform: none;
+} */
+
+.contents li.show h2,
+.contents li.show p,
+main .contents li.show img {
+    transform: none;
+    opacity: 1;
+}
+
+.contents li:not(:first-of-type){
+    margin-top: 200px;
+}
+
+.contents li:nth-of-type(odd) .contentsText{ /*奇数番目だけ右寄り*/
+    right: 0;
+}
+.contents li:nth-of-type(even) .contentsText{ /*偶数番目の概要左よせ*/
+    align-items: flex-start;
+}
+
+.contents li:nth-of-type(odd) img{ /*奇数番目だけ右寄り（写真）*/
+    margin-right: auto;
+    transform: translate(-20px, 20px);
+}
+.contents li:nth-of-type(even) img{ /*偶数番目だけ右寄り（写真）*/
+    margin-left: auto;
+    transform: translate(20px, 20px);
+}
+
+.contentsText{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end; /*右よせ*/
+    position: absolute;
+    top: 40px;
+}
+
+.contents h2{
+    font-size: 50px;
+    font-weight: bold;
+    white-space: nowrap;
+    background-color: rgba(20, 20, 20, .8);
+    padding: 10px 20px;
+    line-height: 1.4;
+    letter-spacing: .05em;
+    border-radius: 5px;
+    opacity: 0; /*透明*/
+    transform: translateY(20px);
+    transition: 1s;
+}
+
+.contents p{
+    line-height: 1.6;
+    background-color: #555555;
+    font-size: 14px;
+    max-width: 340px;
+    padding: 15px;
+    margin-top: 30px;
+    border-radius: 5px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: 1s;
+}
+
+.contents img{
+    width: 65%;
+    display: block;
+    border-radius: 5px;
+    opacity: 0;
+    transform: translateX(-20px);
+    transition: 1s .5s; /*第二引数は遅れてだす*/
+}
+
